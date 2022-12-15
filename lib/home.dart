@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projec_latihan1/page/admin.dart';
+import './page/tentang.dart';
 
 class home extends StatelessWidget {
   const home({
@@ -51,13 +53,16 @@ class home extends StatelessWidget {
           Row(
             children: [
               Container(
+                // alignment: Alignment.center,
                   margin: EdgeInsets.all(15),
                   width: 150,
                   height: 200,
                   decoration: BoxDecoration(
                       color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: IconButton(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    IconButton(
                       icon: const Icon(
                         Icons.thumb_up,
                         color: Colors.white,
@@ -65,15 +70,20 @@ class home extends StatelessWidget {
                       ),
                       onPressed: () {},
                     ),
-                  )),
+                    Text("Rekomendasi", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold))
+                  ],)
+                  ),
+                  
                   Container(
                   
                   width: 150,
                   height: 200,
                   decoration: BoxDecoration(
                       color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: IconButton(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    IconButton(
                       icon: const Icon(
                         Icons.book,
                         color: Colors.white,
@@ -81,7 +91,11 @@ class home extends StatelessWidget {
                       ),
                       onPressed: () {},
                     ),
-                  )),
+                    Text("Katalog", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold))
+                    , 
+                    Text("Kamera", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold))
+                  ],)
+                  ),
             ],
           ),
           Row(
@@ -92,32 +106,56 @@ class home extends StatelessWidget {
                   height: 200,
                   decoration: BoxDecoration(
                       color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: IconButton(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
                       icon: const Icon(
                         Icons.info,
                         color: Colors.white,
                         size: 40,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder:(context) {
+                              return tentang();
+                            },)
+                        );
+                      },
                     ),
-                  )),
+                    Text("Tentang", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold))
+                    ],
+                  )
+                  ),
                   Container(
                   
                   width: 150,
                   height: 200,
                   decoration: BoxDecoration(
                       color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                  child: Center(
-                    child: IconButton(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
                       icon: const Icon(
                         Icons.admin_panel_settings,
                         color: Colors.white,
                         size: 40,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder:(context) {
+                              return AdminPage();
+                            },)
+                        );
+                      },
                     ),
-                  )),
+                    Text("Admin", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white))
+                    ],
+                  )
+                  ),
             ],
           ),
         ],
