@@ -2,164 +2,128 @@ import 'package:flutter/material.dart';
 import 'package:projec_latihan1/page/admin.dart';
 import './page/tentang.dart';
 
-class home extends StatelessWidget {
-  const home({
+class Home extends StatelessWidget {
+  const Home({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFF455A64),
-        title: Center(
-          child: Row(children: [
-            Icon(Icons.linked_camera_rounded, size: 30),
-            SizedBox(
-              width: 5,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Rekomendasi",
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  "Kamera",
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-                ),
-              ],
-            )
-          ]),
+        body: Column(
+      children: [
+        SizedBox(
+          height: size.height * 0.1,
         ),
-      ),
-      body: 
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Center(
-            child: Container(
-              margin: EdgeInsets.all(15),
-              child: Text(
-                "TEMUKAN KAMERA TERBAIK KAMU",
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+        Container(
+          height: size.height * 0.2,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Center(
+                child: Container(
+                  height: 50,
+                  width: 90,
+                  child: Image(
+                    image: AssetImage("image/Logo.png"),
+                    color: Colors.black,
+                  ),
+                ),
               ),
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Row(
-            children: [
-              Container(
-                // alignment: Alignment.center,
-                  margin: EdgeInsets.all(15),
-                  width: 150,
-                  height: 200,
-                  decoration: BoxDecoration(
-                      color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                    IconButton(
-                      icon: const Icon(
-                        Icons.thumb_up,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                      onPressed: () {},
-                    ),
-                    Text("Rekomendasi", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold))
-                  ],)
-                  ),
-                  
-                  Container(
-                  
-                  width: 150,
-                  height: 200,
-                  decoration: BoxDecoration(
-                      color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                    IconButton(
-                      icon: const Icon(
-                        Icons.book,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                      onPressed: () {},
-                    ),
-                    Text("Katalog", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold))
-                    , 
-                    Text("Kamera", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold))
-                  ],)
-                  ),
+              Text(
+                "Temukan Kamera Terbaik Kamu",
+              ),
+              SizedBox(
+                height: 30,
+              )
             ],
           ),
-          Row(
+        ),
+        Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+          ),
+          height: size.height * .7,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                  margin: EdgeInsets.all(15),
-                  width: 150,
-                  height: 200,
-                  decoration: BoxDecoration(
-                      color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                      icon: const Icon(
-                        Icons.info,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder:(context) {
-                              return tentang();
-                            },)
-                        );
-                      },
-                    ),
-                    Text("Tentang", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold))
-                    ],
-                  )
-                  ),
-                  Container(
-                  
-                  width: 150,
-                  height: 200,
-                  decoration: BoxDecoration(
-                      color: Colors.grey, borderRadius: BorderRadius.circular(10)),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                      icon: const Icon(
-                        Icons.admin_panel_settings,
-                        color: Colors.white,
-                        size: 40,
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder:(context) {
-                              return AdminPage();
-                            },)
-                        );
-                      },
-                    ),
-                    Text("Admin", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white))
-                    ],
-                  )
-                  ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  HomeContainer(
+                    icon: Image.asset('image/icon/tumbup.png'),
+                    nama: 'Rekomendasi',
+                    tujuan: () => print('awokaowk'),
+                  ), 
+                  HomeContainer(
+                    icon: Image.asset('image/icon/newspaper.png'),
+                    nama: 'Katalog',
+                    tujuan: () => print('awokaowk'),
+                  )],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [HomeContainer(
+                  icon: Image.asset('image/icon/info.png'),
+                    nama: 'Tentang',
+                    tujuan: () => print('awokaowk'),
+                ), HomeContainer(
+                  icon: Image.asset('image/icon/user.png'),
+                    nama: 'Admin',
+                    tujuan: () => print('awokaowk'),
+                )],
+              )
             ],
           ),
-        ],
-      ),
+        )
+      ],
+    ));
+  }
+}
+
+class HomeContainer extends StatelessWidget {
+  final Function tujuan;
+  final Widget icon;
+  final String nama;
+
+  const HomeContainer({
+    required this.nama,
+    required this.icon,
+    required this.tujuan,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        tujuan;
+      },
+      child: Container(
+        margin: EdgeInsets.all(8.0),
+        height: 200,
+        width: 150,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadiusDirectional.circular(20)),
+        child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        icon,
+                        SizedBox(height: 15,),
+                      Text(nama, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold))
+                    ],)
+                    ),
+        
+        
+          
+          
+    
     );
   }
 }
